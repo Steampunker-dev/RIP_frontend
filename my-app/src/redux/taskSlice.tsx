@@ -118,9 +118,9 @@ export const addFineToResolution = createAsyncThunk(
 
 export const updateFine = createAsyncThunk(
     'task/updateFine',
-    async ({ id, fine }: { id: number; fine: DsTasks }, { rejectWithValue }) => {
+    async ({ id, task }: { id: number; task: DsTasks }, { rejectWithValue }) => {
         try {
-            const response = await api.task.updateUpdate(id, fine);
+            const response = await api.task.updateUpdate(id, task);
             return response.data;
         } catch (error) {
             return rejectWithValue('Ошибка при обновлении штрафа');

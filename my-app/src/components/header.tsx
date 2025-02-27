@@ -20,6 +20,7 @@ const Header: React.FC = () => {
 
     // Обработчик выхода из системы
     const handleExit = async () => {
+
         await dispatch(logoutUserAsync(username));
         navigate(ROUTES.ALBUMS);
     };

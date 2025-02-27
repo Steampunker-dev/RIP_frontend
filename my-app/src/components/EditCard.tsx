@@ -7,9 +7,9 @@ import imaged from "../DefaultImage.jpg";
 interface FineEditCardProps {
     task: DsTasks;
     onChange: (id: number, field: string, value: string | number) => void;
-    onSave: (fineID: number) => void;
-    onDelete: (fineID: number) => void;
-    onImageUpload: (fineID: number, file: File) => void;
+    onSave: (taskID: number) => void;
+    onDelete: (taskID: number) => void;
+    onImageUpload: (taskID: number, file: File) => void;
     isNew?: boolean;
 }
 
@@ -58,7 +58,7 @@ export const EditCard: React.FC<FineEditCardProps> = ({
                     <Form.Label>Время</Form.Label>
                     <Form.Control
                         type="number"
-                        value={task.id}
+                        value={task.minutes}
                         onChange={(e) => onChange(task.id, "minutes", Number(e.target.value))}
                     />
                 </Form.Group>
@@ -73,14 +73,7 @@ export const EditCard: React.FC<FineEditCardProps> = ({
                     />
                 </Form.Group>
 
-                <Form.Group>
-                    <Form.Label>Доп. информация</Form.Label>
-                    <Form.Control
-                        type="text"
-                        value={task.description}
-                        onChange={(e) => onChange(task.id, "dopInf", e.target.value)}
-                    />
-                </Form.Group>
+
 
                 <div className="button-group">
                     <Button className="save-button" onClick={() => onSave(task.id)}>

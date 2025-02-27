@@ -304,11 +304,11 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @summary Update a task by ID
      * @request PUT:/task/update/{id}
      */
-    updateUpdate: (id: number, fine: DsTasks, params: RequestParams = {}) =>
+    updateUpdate: (id: number, task: DsTasks, params: RequestParams = {}) =>
       this.request<DsTasks, Record<string, string>>({
         path: `/task/update/${id}`,
         method: "PUT",
-        body: fine,
+        body: task,
         type: ContentType.Json,
         format: "json",
         ...params,
