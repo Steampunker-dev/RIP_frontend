@@ -203,7 +203,7 @@ export class HttpClient<SecurityDataType = unknown> {
 }
 
 /**
- * @title Fines for scooter
+ * @title Tasks for scooter
  * @version 1.0
  * @baseUrl http://localhost:8080
  * @contact
@@ -215,15 +215,15 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * @description Get list of all fines or search fines by keyword
      *
-     * @tags Fines
-     * @name FineList
-     * @summary Get all fines
-     * @request GET:/fine
+     * @tags tasks
+     * @name TaskList
+     * @summary Get all tasks
+     * @request GET:/task
      */
     fineList: (
       query?: {
-        /** Search fines */
-        searchFines?: string;
+        /** Search tasks */
+        minutesFrom?: string;
       },
       params: RequestParams = {},
     ) =>
@@ -236,12 +236,12 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       }),
 
     /**
-     * @description Add fine to a user's resolution
+     * @description Add task to a user's resolution
      *
-     * @tags Fines
+     * @tags Tasks
      * @name PostFine
-     * @summary Add a fine to a resolution
-     * @request POST:/fine/add/{id}
+     * @summary Add a task to a resolution
+     * @request POST:/task/add/{id}
      */
     postFine: (id: number, params: RequestParams = {}) =>
       this.request<string, Record<string, string>>({
@@ -254,14 +254,14 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * @description Create a new fine
      *
-     * @tags Fines
+     * @tags Tasks
      * @name CreateCreate
-     * @summary Create a new fine
-     * @request POST:/fine/create
+     * @summary Create a new task
+     * @request POST:/task/create
      */
     createCreate: (fine: DsTasks, params: RequestParams = {}) =>
       this.request<DsTasks, Record<string, string>>({
-        path: `/fine/create`,
+        path: `/task/create`,
         method: "POST",
         body: fine,
         type: ContentType.Json,
@@ -275,7 +275,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @tags Images
      * @name PostFine2
      * @summary Upload an image by ID
-     * @request POST:/fine/img/{id}
+     * @request POST:/task/img/{id}
      * @originalName postFine
      * @duplicate
      */
@@ -288,7 +288,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       params: RequestParams = {},
     ) =>
       this.request<Record<string, string>, Record<string, string>>({
-        path: `/fine/img/${id}`,
+        path: `/task/img/${id}`,
         method: "POST",
         body: data,
         type: ContentType.FormData,
@@ -299,14 +299,14 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * @description Update fine details by its ID
      *
-     * @tags Fines
+     * @tags task
      * @name UpdateUpdate
-     * @summary Update a fine by ID
-     * @request PUT:/fine/update/{id}
+     * @summary Update a task by ID
+     * @request PUT:/task/update/{id}
      */
     updateUpdate: (id: number, fine: DsTasks, params: RequestParams = {}) =>
       this.request<DsTasks, Record<string, string>>({
-        path: `/fine/update/${id}`,
+        path: `/task/update/${id}`,
         method: "PUT",
         body: fine,
         type: ContentType.Json,
@@ -317,10 +317,10 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * @description Get a fine by its ID
      *
-     * @tags Fines
-     * @name FineDetail
-     * @summary Get fine by ID
-     * @request GET:/fine/{id}
+     * @tags Task
+     * @name TaskDetail
+     * @summary Get task by ID
+     * @request GET:/task/{id}
      */
     fineDetail: (id: number, params: RequestParams = {}) =>
       this.request<DsTasks, string | Record<string, string>>({
@@ -334,14 +334,14 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * @description Delete fine by its ID
      *
-     * @tags Fines
+     * @tags Task
      * @name DeleteDelete
-     * @summary Delete a fine by ID
-     * @request DELETE:/fine/delete/{id}
+     * @summary Delete a Task by ID
+     * @request DELETE:/task/delete/{id}
      */
     deleteDelete: (id: number, params: RequestParams = {}) =>
       this.request<string, Record<string, string>>({
-        path: `/fine/delete/${id}`,
+        path: `/task/delete/${id}`,
         method: "DELETE",
         format: "json",
         ...params,
@@ -351,9 +351,9 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * @description Update the count of a fine-resolution link
      *
-     * @tags Fines-Resolutions
+     * @tags Task-Resolutions
      * @name CountUpdate
-     * @summary Update fine-resolution count
+     * @summary Update task-resolution count
      * @request PUT:/fr/count/{id}
      */
     countUpdate: (id: number, request: DsTaskResolutions, params: RequestParams = {}) =>
@@ -369,9 +369,9 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * @description Delete fine-resolution link by its ID
      *
-     * @tags Fines-Resolutions
+     * @tags Tasks-Resolutions
      * @name DeleteDelete
-     * @summary Delete fine-resolution link by ID
+     * @summary Delete task-resolution link by ID
      * @request DELETE:/tl/delete/{id}
      */
     deleteDelete: (id: number, params: RequestParams = {}) =>

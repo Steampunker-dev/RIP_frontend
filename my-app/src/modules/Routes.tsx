@@ -2,7 +2,7 @@ export const ROUTES = {
     HOME: "/",
     ALBUMS: "/tasks",
     LOGIN: "/login",
-    EDIT: "/edit_fine",
+    EDIT: "/edit_tasks",
     BASKET: "/basket",
     RESOLUTIONS: "/resolutions",
 }

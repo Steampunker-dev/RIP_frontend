@@ -5,48 +5,47 @@ import { AppDispatch, RootState } from "../redux/store";
 import { getFinesList, updateFine, deleteFine, uploadFineImage, createFine } from "../redux/taskSlice.tsx";
 import { EditCard } from "../components/EditCard";
 import "./EditPage.css";
-import {DsFines} from "../api/Api.ts";
+import {DsTasks} from "../api/Api.ts";
 
 const FineEditPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     // Загружаем список штрафов из Redux-хранилища
-    const { fines, loading } = useSelector((state: RootState) => state.fines);
+    const { tasks, loading } = useSelector((state: RootState) => state.tasks);
 
     // Локальное состояние для редактируемых данных
-    const [editedFines, setEditedFines] = useState(fines);
-    const [newFine, setNewFine] = useState<DsFines | null>(null); // Для нового штрафа
+    const [editedFines, setEditedFines] = useState(tasks);
+    const [newFine, setNewFine] = useState<DsTasks | null>(null); // Для нового штрафа
 
     useEffect(() => {
         dispatch(getFinesList());
     }, [dispatch]);
 
     useEffect(() => {
-        setEditedFines(fines);
-    }, [fines]);
+        setEditedFines(tasks);
+    }, [tasks]);
 
     // ✅ Обработчик изменения полей
     const handleChange = (id: number, field: string, value: string | number) => {
         if (newFine && newFine.id === id) {
             setNewFine({ ...newFine, [field]: value });
         } else {
-            setEditedFines((prevFines) =>
-                prevFines.map((fine) =>
-                    fine.id === id ? { ...fine, [field]: value } : fine
+            setEditedFines((prevTask) =>
+                prevTask.map((task) =>
+                    task.id === id ? { ...task, [field]: value } : task
                 )
             );
         }
     };
 
     // ✅ Обработчик сохранения изменений (для редактирования)
-    const handleSave = (fineID: number) => {
-        const updatedFine = editedFines.find((fine) => fine.id === fineID);
-        if (updatedFine) {
-            dispatch(updateFine({ id: fineID, fine: updatedFine }));
+    const handleSave = (taskID: number) => {
+        const updatetask = editedFines.find((task) => task.id === taskID);
+        if (updatetask) {
+            dispatch(updateFine({ id: taskID, task: updatetask }));
         }
     };
 
-    // ✅ Обработчик удаления штрафа
     const handleDelete = (fineID: number) => {
         dispatch(deleteFine(fineID));
     };
@@ -58,7 +57,6 @@ const FineEditPage: React.FC = () => {
         dispatch(uploadFineImage({ fineID, formData }));
     };
 
-    // ✅ Добавление нового штрафа
     const handleAddFine = () => {
         setNewFine({
             id: Date.now(), // Временный ID до создания на сервере
@@ -70,7 +68,6 @@ const FineEditPage: React.FC = () => {
         });
     };
 
-    // ✅ Сохранение нового штрафа
     const handleSaveNewFine = () => {
         if (newFine) {
             dispatch(createFine(newFine)).then(() => {
@@ -80,7 +77,6 @@ const FineEditPage: React.FC = () => {
         }
     };
 
-    // ✅ Отмена добавления нового штрафа
     const handleCancelNewFine = () => {
         setNewFine(null);
     };
@@ -99,7 +95,7 @@ const FineEditPage: React.FC = () => {
                 <>
                     {newFine && (
                         <EditCard
-                            fine={newFine}
+                            task={newFine}
                             onChange={handleChange}
                             onSave={handleSaveNewFine}
                             onDelete={handleCancelNewFine} // Отмена добавления штрафа
@@ -108,10 +104,10 @@ const FineEditPage: React.FC = () => {
                             isNew={true} // Доп. пропс для стилизации
                         />
                     )}
-                    {editedFines.map((fine) => (
+                    {editedFines.map((task) => (
                         <EditCard
-                            key={fine.id}
-                            fine={fine}
+                            key={task.id}
+                            task={task}
                             onChange={handleChange}
                             onSave={handleSave}
                             onDelete={handleDelete}

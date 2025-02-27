@@ -1,12 +1,12 @@
 export interface Task {
     taskID: number;
     title: string;
-    fullInf: string,
-    price: number;
+    description: string,
+    minutes: number;
     imge: string;
     dopInf: string;
 }
-export interface finesResult {
+export interface tasksResult {
     tasks: Task[];
     resCount: number;
     resId: number;

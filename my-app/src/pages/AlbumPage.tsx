@@ -10,7 +10,7 @@ import {MoreCard} from "../components/MoreCard.tsx";
 
 
 export const AlbumPage: FC = () => {
-    const [pageData, setPageData] = useState<Fine>();
+    const [pageData, setPageData] = useState<Task>();
     const { id } = useParams(); // ид страницы, пример: "/albums/12"
 
     useEffect(() => {
