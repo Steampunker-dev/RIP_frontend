@@ -1,0 +1,117 @@
+/* Основные стили карточки */
+.fineCard {
+    width: min(95%, 500px); /* Увеличена максимальная ширина */
+    min-width: 480px; /* Увеличена минимальная ширина */
+    height: auto;
+    border: 2px solid #0078D7 !important; /* Чуть более светлый синий */
+    border-radius: 10px !important; /* Немного сгладил углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12); /* Чуть мягче тень */
+    padding: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #F8F9FC !important; /* Светло-белый фон */
+    transition: transform 0.3s ease;
+}
+
+/* ✅ Адаптация карточек на узких экранах */
+@media (max-width: 768px) {
+    .fineCard {
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .fineCard {
+        min-width: 100%;
+    }
+}
+
+/* ✅ Пропорциональное уменьшение карточек */
+@media (max-width: 480px) {
+    .fineCard {
+        transform: scale(0.9);
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 360px) {
+    .fineCard {
+        transform: scale(0.8);
+        min-height: 380px;
+    }
+}
+
+/* Стили изображения (исправлено для широких изображений) */
+.cardImage {
+    width: 100%;
+    height: 250px; /* Фиксированная высота */
+    object-fit: contain; /* Гарантирует, что вся картинка поместится без обрезки */
+    cursor: pointer;
+    border-radius: 10px; /* Немного более плавные углы */
+    background-color: #fff; /* Фон для прозрачных изображений */
+}
+
+/* Контейнер для текста и кнопки */
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Заголовок */
+.textStyle {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #333333 !important;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;
+}
+
+/* ✅ Разделение цены и кнопки по краям */
+.cardPriceButtonWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    width: 100%;
+}
+
+/* Цена */
+.cardPrice {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0078D7 !important; /* Светлее синий */
+    white-space: nowrap;
+}
+
+/* Кнопка */
+.cardButton {
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #0078D7 !important; /* Чуть более светлый синий */
+    border: 2px solid #0066C0 !important; /* Немного темнее бордюр */
+    color: white !important;
+    border-radius: 8px; /* Чуть более плавные углы */
+    text-decoration: none;
+    white-space: nowrap;
+    min-width: 80px;
+    max-width: 120px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardButton:hover {
+    background-color: #0066C0 !important; /* Темнее при наведении */
+    transform: scale(1.03);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Мягкое выделение */
+}

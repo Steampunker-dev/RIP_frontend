@@ -1,0 +1,78 @@
+/* Контейнер главной страницы */
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 150px); /* Учитываем высоту навбара */
+    text-align: center;
+    flex-direction: column;
+    background-color: #F9FBFD; /* Легкий фон для улучшенной читаемости */
+    padding: 20px;
+}
+
+/* Текст заголовка */
+.home-text {
+    font-size: 2rem; /* Чуть больше для лучшей читаемости */
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #0056B3; /* Глубокий синий цвет */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Анимация появления текста */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Кнопка */
+.home-button {
+    background-color: #0078D7 !important; /* Более чистый синий */
+    border: none !important;
+    color: white !important;
+    padding: 12px 24px;
+    font-size: 1.3rem;
+    text-decoration: none !important;
+    display: inline-block;
+    border-radius: 8px; /* Чуть сглаженные края */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 120, 215, 0.2);
+    animation: fadeIn 1.2s ease-in-out forwards;
+    opacity: 0;
+}
+
+/* Эффект при наведении */
+.home-button:hover,
+.home-button:focus {
+    background-color: #0056B3 !important;
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 120, 215, 0.3);
+}
+
+/* Эффект при нажатии */
+.home-button:active {
+    transform: scale(0.95);
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .home-text {
+        font-size: 1.6rem;
+    }
+
+    .home-button {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+    }
+}

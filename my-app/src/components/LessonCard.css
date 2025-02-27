@@ -1,0 +1,74 @@
+/* Контейнер для карточек, выводит две карточки в ряду */
+.lesson-cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px; /* Чуть больше пространства между карточками */
+    margin: 30px auto; /* Увеличил отступ сверху и снизу */
+    max-width: 1100px; /* Немного расширил контейнер */
+    padding: 10px;
+}
+
+/* Основной контейнер карточки */
+.lesson-card {
+    background-color: #F9FBFD;         /* Светло-белый фон для мягкого контраста */
+    border: 2px solid #0078D7;        /* Чуть более чистый синий */
+    border-radius: 8px;               /* Немного закруглил углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12); /* Сделал тень выразительнее */
+    padding: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Эффект при наведении на карточку */
+.lesson-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(0, 120, 215, 0.2);
+}
+
+/* Заголовок карточки */
+.lesson-card__title {
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+    color: #0056B3; /* Глубокий синий цвет */
+    font-weight: bold;
+    text-align: center; /* Выравнивание заголовка по центру */
+}
+
+/* Тело карточки */
+.lesson-card__body p {
+    margin: 10px 0;
+    font-size: 1.05rem; /* Чуть увеличил размер шрифта */
+    line-height: 1.5;   /* Улучшил читаемость */
+    color: #333;
+    text-align: justify; /* Добавил выравнивание текста */
+}
+
+/* Кнопка - теперь центрирована */
+.lesson-card__btn {
+    display: block;
+    width: fit-content;
+    margin: 16px auto; /* Центрируем кнопку */
+    padding: 12px 24px;
+    background-color: #0078D7;
+    color: #fff;
+    border: 2px solid #0078D7;
+    border-radius: 6px;       /* Чуть сгладил углы */
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+/* При наведении на кнопку */
+.lesson-card__btn:hover {
+    background-color: #0056B3;
+    border-color: #0056B3;
+    transform: scale(1.05);
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .lesson-cards-container {
+        grid-template-columns: repeat(1, 1fr); /* 1 карточка в ряд на мобильных */
+        max-width: 600px;
+    }
+}

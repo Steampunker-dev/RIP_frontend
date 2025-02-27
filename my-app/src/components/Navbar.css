@@ -1,0 +1,63 @@
+/* Navbar.css */
+
+.navbar-custom {
+    background: linear-gradient(to bottom, #d9e9f8, #a8d0f0) !important; /* Более мягкий градиент */
+    border-bottom: solid #8cb6d6 !important; /* Чуть темнее для лучшего разделения */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 45px !important; /* Чуть увеличил высоту */
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+/* Стили ссылок */
+.navbar-custom .nav-link {
+    color: #0056B3 !important; /* Более четкий синий */
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    margin: 0 12px !important; /* Чуть больше отступов */
+    transition: background 0.3s, color 0.3s;
+    display: inline-block !important;
+    font-size: 16px !important;
+    padding: 6px 12px !important; /* Добавил небольшие отступы для лучшего UX */
+    border-radius: 6px !important; /* Чуть сгладил */
+}
+
+/* Стили при наведении */
+.navbar-custom .nav-link:hover {
+    color: #ffffff !important; /* Белый текст */
+    background: linear-gradient(to bottom, #0078D7, #0056B3) !important; /* Светлее при наведении */
+}
+
+/* Если элемент в фокусе, но на него не наведена мышь, применяем базовый стиль */
+.navbar-custom .nav-link:focus:not(:hover) {
+    color: #0056B3 !important;
+    background: none !important;
+}
+
+/* Активная ссылка */
+.navbar-custom .nav-link.active {
+    color: #0056B3 !important;
+    background: rgba(255, 255, 255, 0.2) !important; /* Легкий выделяющий эффект */
+    border-radius: 6px !important;
+}
+
+/* Контейнер */
+.navbar-custom .container {
+    padding: 15px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    max-width: 1200px !important;
+    width: 100% !important;
+    position: relative !important;
+}
+
+/* Навигация */
+.navbar-custom .nav {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 20px !important;
+}

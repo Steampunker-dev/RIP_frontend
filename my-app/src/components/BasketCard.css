@@ -1,0 +1,165 @@
+/* Контейнер карточки */
+.basketCardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    border: 2px solid #0078D7; /* Чуть светлее и насыщеннее синий */
+    padding: 12px;
+    background-color: #F9FBFD; /* Светло-белый фон для лучшего контраста */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    width: 80%;
+    max-width: 750px; /* Немного увеличил ширину */
+    margin: 30px auto;
+    height: 130px; /* Чуть выше, чтобы текст не слипался */
+    border-radius: 8px; /* Немного сгладил углы */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Эффект при наведении */
+.basketCardContainer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0, 120, 215, 0.2);
+}
+
+/* Левый блок - изображение */
+.basketCardImage {
+    flex-shrink: 0;
+    margin-right: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Изображение */
+.basketCardImg {
+    border-radius: 6px;
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Анимация при наведении */
+.basketCardImg:hover {
+    transform: scale(1.05);
+}
+
+/* Центральный блок - контент */
+.basketCardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+    height: 100%;
+}
+
+/* Заголовок (прижат к верху) */
+.basketCardTitle {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 0;
+    color: #0056B3; /* Глубокий синий цвет */
+}
+
+/* Контейнер кнопок */
+.basketCardButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px; /* Увеличил отступ */
+    margin-top: auto;
+}
+
+/* Кнопка "Подробнее" */
+.basketCardLink {
+    background-color: #0078D7;
+    color: white;
+    padding: 7px 14px;
+    text-decoration: none;
+    width: max-content;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.basketCardLink:hover {
+    background-color: #0056B3;
+    transform: scale(1.05);
+}
+
+/* Кнопка "Удалить" */
+.basketCardDelete {
+    background-color: #d9534f;
+    color: white;
+    padding: 7px 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.basketCardDelete:hover {
+    background-color: #c9302c;
+    transform: scale(1.05);
+}
+
+/* Правый блок - доп. инфо и цена (растягивается) */
+.basketCardInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+}
+
+/* Доп. инфо */
+.basketCardInfo p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Цена (прижимаем к низу) */
+.basketCardPrice {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #0078D7;
+    margin-top: auto;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Эффект при наведении на цену */
+.basketCardPrice:hover {
+    color: #0056B3;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .basketCardContainer {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 15px;
+    }
+
+    .basketCardImage {
+        margin-bottom: 10px;
+    }
+
+    .basketCardImg {
+        width: 100%;
+        max-width: 120px;
+        height: auto;
+    }
+
+    .basketCardButtonWrapper {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .basketCardInfo {
+        align-items: center;
+    }
+}

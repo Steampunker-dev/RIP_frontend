@@ -1,0 +1,107 @@
+/* ✅ Центрируем форму */
+.login-container {
+    max-width: 400px !important;
+    margin: 80px auto !important; /* Чуть меньше отступ сверху */
+    padding: 25px !important;
+    border: 2px solid #0078D7 !important; /* Чистый синий */
+    border-radius: 8px !important; /* Легкое скругление */
+    background-color: white !important;
+    box-shadow: 0 6px 12px rgba(0, 120, 215, 0.15) !important; /* Чуть более выраженная тень */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Эффект при наведении */
+.login-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 120, 215, 0.25) !important;
+}
+
+/* ✅ Стили заголовка */
+.login-title {
+    text-align: center !important;
+    margin-bottom: 20px !important;
+    color: #0056B3 !important; /* Чуть темнее синий */
+    font-size: 26px !important;
+    font-weight: bold !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+/* ✅ Анимация заголовка */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ✅ Поля ввода */
+.form-control {
+    border: 2px solid #0078D7 !important; /* Чистый синий */
+    border-radius: 6px !important; /* Чуть сглаженные углы */
+    padding: 12px !important;
+    font-size: 16px !important;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* ✅ Фокус на поле ввода */
+.form-control:focus {
+    border-color: #0056B3 !important;
+    box-shadow: 0 0 8px rgba(0, 120, 215, 0.3) !important;
+}
+
+/* ✅ Метки (логин, пароль) */
+.form-label {
+    color: #0078D7 !important;
+    font-weight: bold !important;
+    font-size: 15px !important;
+}
+
+/* ✅ Кнопка входа */
+.login-button {
+    width: 100% !important;
+    background-color: #0078D7 !important;
+    border: none !important;
+    padding: 12px !important;
+    font-size: 17px !important;
+    font-weight: bold !important;
+    color: white !important;
+    border-radius: 6px !important;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 120, 215, 0.2);
+}
+
+/* ✅ Эффект наведения */
+.login-button:hover {
+    background-color: #0056B3 !important;
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 120, 215, 0.3);
+}
+
+/* ✅ Эффект при нажатии */
+.login-button:active {
+    transform: scale(0.98);
+}
+
+/* ✅ Адаптивность */
+@media (max-width: 480px) {
+    .login-container {
+        max-width: 350px !important;
+    }
+
+    .login-title {
+        font-size: 24px !important;
+    }
+
+    .login-button {
+        font-size: 16px !important;
+        padding: 10px !important;
+    }
+}

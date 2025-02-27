@@ -1,0 +1,165 @@
+/* Стили header */
+header {
+    background: linear-gradient(to bottom, #007bff, #007bff); /* Более сбалансированный градиент */
+    padding: 12px 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding-right: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Добавил легкую тень */
+}
+
+/* Контейнер хедера */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+/* Блок заголовка */
+.title-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+/* Заголовок */
+h1 {
+    color: white !important;
+    font-size: 34px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Добавляем мягкий эффект при наведении */
+h1:hover {
+    color: #d9e9f8 !important;
+}
+
+/* Логотип */
+.emblem {
+    width: 70px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Легкий масштаб при наведении */
+.emblem:hover {
+    transform: scale(1.05);
+}
+
+/* Карта */
+.map {
+    position: absolute;
+    right: 140px;
+    width: 160px;
+    height: auto;
+    opacity: 0.9; /* Немного прозрачности */
+    transition: 0.3s ease-in-out;
+}
+
+/* При наведении карта немного проявляется */
+.map:hover {
+    opacity: 1;
+}
+
+/* Адаптивность: скрываем карту при сужении экрана */
+@media (max-width: 768px) {
+    .map {
+        display: none;
+    }
+}
+
+/* Адаптивность: скрываем заголовок на очень узких экранах */
+@media (max-width: 480px) {
+    h1 {
+        display: none;
+    }
+}
+
+/* Иконка пользователя */
+.user-icon {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Анимация при наведении */
+.user-icon:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Делаем иконку белой */
+.user-icon svg {
+    color: white;
+    width: 32px;
+    height: 32px;
+}
+
+/* Убираем стрелочку в Dropdown */
+.user-icon::after {
+    display: none !important;
+}
+
+/* Меню пользователя */
+.dropdown-menu {
+    width: 180px !important;
+    max-width: 180px !important;
+    padding: 8px 0;
+    border: 1px solid #c0c0c0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    border-radius: 8px;
+}
+
+/* Убираем отступ у элементов списка */
+.dropdown-item {
+    padding: 10px 14px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0078D7 !important;
+    transition: background 0.3s ease, color 0.3s ease;
+    text-align: center;
+    border-radius: 6px;
+}
+
+/* Эффект при наведении */
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Эффект при нажатии */
+.dropdown-item:active {
+    background-color: #0078D7 !important;
+    color: white !important;
+}
+
+/* Разделительная линия */
+.dropdown-divider {
+    border-top: 1px solid #c0c0c0 !important;
+    margin: 6px 0 !important;
+}
+
+/* Имя пользователя */
+.username-text {
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 12px;
+    color: #0078D7 !important;
+    font-size: 16px;
+}

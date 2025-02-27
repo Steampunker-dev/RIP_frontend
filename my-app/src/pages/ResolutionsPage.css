@@ -1,0 +1,121 @@
+/* Контейнер страницы */
+.lessons-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #F9FBFD; /* Лёгкий фон */
+    border-radius: 8px; /* Чуть сглаженные углы */
+    box-shadow: 0 4px 12px rgba(0, 120, 215, 0.1);
+}
+
+/* Контейнер для фильтров */
+.lessons-page__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 30px;
+    border: 2px solid #0078D7;
+    padding: 20px;
+    border-radius: 6px;
+    background-color: #F0F6FC; /* Светлый фон для фильтров */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Анимация фильтров при наведении */
+.lessons-page__filters:hover {
+    box-shadow: 0 6px 14px rgba(0, 120, 215, 0.2);
+}
+
+/* Группа одного фильтра */
+.lessons-page__filter-group {
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Стиль для метки */
+.lessons-page__filter-group label {
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #0078D7;
+}
+
+/* Стили для полей ввода и выпадающих списков */
+.lessons-page__input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #0078D7;
+    border-radius: 6px;
+    background-color: #fff;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Эффект фокуса */
+.lessons-page__input:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 120, 215, 0.3);
+    border-color: #0056B3;
+}
+
+/* Кастомизация для выпадающего списка */
+select.lessons-page__input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath fill='%230078D7' d='M5 7L0 0h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 14px;
+}
+
+/* Стили для кнопки */
+.lessons-page__search-btn {
+    padding: 12px 24px;
+    background-color: #0078D7;
+    color: #fff;
+    border: 2px solid #0078D7;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 120, 215, 0.2);
+}
+
+/* Эффект при наведении */
+.lessons-page__search-btn:hover {
+    background-color: #0056B3;
+    border-color: #0056B3;
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 120, 215, 0.3);
+}
+
+/* Эффект при нажатии */
+.lessons-page__search-btn:active {
+    transform: scale(0.97);
+}
+
+/* Контейнер для карточек уроков */
+.lesson-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Адаптивность для узких экранов */
+@media (max-width: 768px) {
+    .lessons-page__filters {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lessons-page__filter-group {
+        width: 100%;
+    }
+
+    .lessons-page {
+        max-width: 95%;
+    }
+}

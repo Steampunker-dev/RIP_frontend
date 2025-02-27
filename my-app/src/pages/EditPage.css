@@ -1,0 +1,153 @@
+/* Контейнер страницы */
+.fine-edit-page {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 24px !important; /* Чуть больше пространства между элементами */
+    justify-content: center !important;
+    padding: 20px !important;
+    background-color: #F9FBFD !important; /* Легкий светлый фон */
+}
+
+/* Карточка редактирования */
+.fine-edit-card {
+    width: 360px !important; /* Чуть больше, чтобы контент лучше помещался */
+    border: 2px solid #0078D7 !important; /* Чистый синий */
+    padding: 18px !important;
+    border-radius: 8px !important; /* Добавил небольшое скругление */
+    background-color: white !important;
+    box-shadow: 0 4px 10px rgba(0, 120, 215, 0.15) !important; /* Легкая тень */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out !important;
+}
+
+/* Эффект при наведении */
+.fine-edit-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0, 120, 215, 0.25) !important;
+}
+
+/* Контейнер загрузки */
+.upload-container {
+    text-align: center !important;
+    margin-top: 12px !important;
+}
+
+/* Кнопка загрузки изображения */
+.upload-button {
+    display: inline-block !important;
+    padding: 10px 14px !important;
+    background-color: #0078D7 !important;
+    color: white !important;
+    font-size: 15px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    width: 100% !important;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out !important;
+}
+
+/* Hover-эффект */
+.upload-button:hover {
+    background-color: #0056B3 !important;
+    transform: scale(1.03);
+}
+
+/* Скрываем input file */
+.file-input {
+    display: none !important;
+}
+
+/* Изображение штрафа */
+.fine-image {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 6px !important;
+}
+
+/* Группа кнопок */
+.button-group {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-top: 12px !important;
+}
+
+/* Кнопка сохранения */
+.save-button {
+    background-color: #0078D7 !important;
+    border: none !important;
+    color: white !important;
+    font-weight: bold !important;
+    flex-grow: 1 !important;
+    margin-right: 10px !important;
+    padding: 10px 14px !important;
+    border-radius: 6px !important;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out !important;
+}
+
+.save-button:hover {
+    background-color: #0056B3 !important;
+    transform: scale(1.03);
+}
+
+/* Кнопка удаления */
+.delete-button {
+    background-color: #d9534f !important;
+    border: none !important;
+    color: white !important;
+    font-weight: bold !important;
+    flex-grow: 1 !important;
+    padding: 10px 14px !important;
+    border-radius: 6px !important;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out !important;
+}
+
+.delete-button:hover {
+    background-color: #c9302c !important;
+    transform: scale(1.03);
+}
+
+/* Кнопка добавления */
+.add-btn {
+    text-decoration: none;
+    border: 3px solid #0078D7; /* Чистый синий ободок */
+    background-color: transparent;
+    padding: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px; /* Чуть больше */
+    height: 75px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease-in-out;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 120, 215, 0.2);
+}
+
+/* Hover-эффект */
+.add-btn:hover {
+    background-color: #0078D7;
+    color: white;
+    transform: scale(1.15);
+}
+
+/* Иконка внутри кнопки */
+.add-btn img {
+    width: 36px;
+    height: 36px;
+}
+
+/* Размещение кнопки по центру страницы */
+.add-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}

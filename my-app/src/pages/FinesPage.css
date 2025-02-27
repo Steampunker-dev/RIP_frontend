@@ -1,0 +1,122 @@
+/* Контейнер карточек */
+.full-width-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    justify-content: center; /* Центрирование по умолчанию */
+}
+
+/* ✅ Центрирование единственной карточки */
+.full-width-row > *:only-child {
+    margin: 0 auto;
+}
+
+/* ✅ Оптимальное распределение 2-3 карточек */
+@media (max-width: 1024px) {
+    .full-width-row {
+        justify-content: space-around !important;
+    }
+}
+
+/* ✅ Центрирование карточек на мобильных */
+@media (max-width: 768px) {
+    .full-width-row {
+        justify-content: center !important;
+    }
+    .full-width-row .col {
+        flex: 1 1 auto;
+        max-width: 350px;
+    }
+}
+
+/* ✅ Улучшенный значок корзины */
+.cart-icon {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 55px;
+    height: 55px;
+    z-index: 1000;
+    background: #0078D7; /* Новый чистый синий */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Эффект при наведении */
+.cart-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 14px rgba(0, 120, 215, 0.3);
+}
+
+/* Иконка в корзине */
+.cart-icon img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+
+/* Число товаров в корзине */
+.cart-icon .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #FF3B30; /* Чистый красный */
+    color: white;
+    border-radius: 50%;
+    padding: 6px 9px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ Улучшенный спиннер загрузки */
+.loadingBg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    min-height: 80px; /* Минимальная высота */
+}
+
+/* Стиль спиннера */
+.loadingBg .spinner-border {
+    width: 45px;
+    height: 45px;
+    border-width: 4px;
+    color: #0078D7 !important; /* Чистый синий */
+    animation: spin 1s linear infinite;
+}
+
+/* Анимация вращения */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .cart-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .cart-icon img {
+        width: 40px;
+        height: 40px;
+    }
+    .loadingBg .spinner-border {
+        width: 35px;
+        height: 35px;
+        border-width: 3px;
+    }
+}
