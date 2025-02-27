@@ -1,6 +1,6 @@
 // src/redux/store.ts
 import { configureStore } from '@reduxjs/toolkit';
-import fineReducer from './fineSlice.tsx';
+import taskReducer from './taskSlice.tsx';
 import userReducer from './userSlice';
 import cartReducer from './resolutionSlice.tsx';
 import lessonReducer from './lessonsSlice.tsx';
@@ -8,7 +8,7 @@ import lessonReducer from './lessonsSlice.tsx';
 
 export const store = configureStore({
     reducer: {
-        fines: fineReducer,
+        tasks: taskReducer,
         user: userReducer,
         cart: cartReducer,
         lessons: lessonReducer,

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Button, InputGroup, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
-import {getFinesList, setSearchValue} from '../redux/fineSlice.tsx';
+import {getFinesList, setSearchValue} from '../redux/taskSlice.tsx';
 import './InputField.css';
 
 interface Props {

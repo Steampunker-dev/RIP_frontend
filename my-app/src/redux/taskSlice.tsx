@@ -1,22 +1,22 @@
 // src/redux/fineSlice.ts
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { DsFines } from "../api/Api.ts";
-import { api  } from "../api";
-import { ALBUMS_MOCK } from "../modules/mock.ts";
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {DsTasks} from "../api/Api.ts";
+import {api} from "../api";
+import {ALBUMS_MOCK} from "../modules/mock.ts";
 import {fetchCart} from "./resolutionSlice.tsx";
 
-export interface FinesState {
+export interface TaskState {
     searchValue: string;
     loading: boolean;
-    fines: DsFines[];
+    tasks: DsTasks[];
     resCount: number;
     resId: number;
 }
 
-const initialState: FinesState = {
+const initialState: TaskState = {
     searchValue: '',
     loading: false,
-    fines: [],
+    tasks: [],
     resCount: 0,
     resId: 0,
 };
@@ -24,10 +24,10 @@ const initialState: FinesState = {
 
 // ✅ Thunk для создания нового штрафа
 export const createFine = createAsyncThunk(
-    'fine/createFine',
-    async (newFine: DsFines, { rejectWithValue, dispatch }) => {
+    'task/createFine',
+    async (newFine: DsTasks, { rejectWithValue, dispatch }) => {
         try {
-            const response = await api.fine.createCreate(newFine);
+            const response = await api.task.createCreate(newFine);
             dispatch(getFinesList()); // ✅ Обновляем список штрафов после создания
             return response.data;
         } catch (error) {
@@ -37,15 +37,15 @@ export const createFine = createAsyncThunk(
 );
 
 export const getFinesList = createAsyncThunk(
-    'fine/fineList',
+    'task/fineList',
     async (_, { getState, rejectWithValue }) => {
         // Правильно достаем состояние из store: обращаемся к fines
-        const state = getState() as { fines: FinesState };
-        const searchValue = state.fines.searchValue;
+        const state = getState() as { tasks: TaskState };
+        const searchValue = state.tasks.searchValue;
 
 
         try {
-            const response = await api.fine.fineList({ minutesFrom: searchValue });
+            const response = await api.task.fineList({ minutesFrom: searchValue });
             await console.log(response.data)
             return response.data;
 
@@ -56,11 +56,11 @@ export const getFinesList = createAsyncThunk(
 );
 
 export const deleteFine = createAsyncThunk(
-    "fines/deleteFine",
-    async (fineID: number, { rejectWithValue }) => {
+    "tasks/deleteFine",
+    async (taskID: number, { rejectWithValue }) => {
     try {
-        await api.fines.deleteDelete(fineID);
-        return fineID;
+        await api.tasks.deleteDelete(taskID);
+        return taskID;
     } catch (error) {
         return rejectWithValue("Ошибка при удалении штрафа");
     }
@@ -80,10 +80,10 @@ export const uploadFineImage = createAsyncThunk(
 );
 
 export const addFineToResolution = createAsyncThunk(
-    'fine/addFineToResolution',
+    'task/addFineToResolution',
     async (fineId: number, thunkAPI) => {
         try {
-            const response = await api.fine.postFine(fineId);
+            const response = await api.task.postFine(fineId);
             console.log(`✅ Задача ${fineId} добавлена в заявку:`, response.data);
 
             // ✅ Получаем новый `resId` от сервера
@@ -97,7 +97,7 @@ export const addFineToResolution = createAsyncThunk(
                 localStorage.setItem('resId', updatedResId);
 
                 // ✅ Обновляем `Redux`
-                thunkAPI.dispatch(finesSlice.actions.updateResId(updatedResId));
+                thunkAPI.dispatch(taskSlice.actions.updateResId(updatedResId));
 
                 // ✅ Дожидаемся обновления Redux перед `fetchCart()`
                 await new Promise((resolve) => setTimeout(resolve, 10));
@@ -117,10 +117,10 @@ export const addFineToResolution = createAsyncThunk(
 );
 
 export const updateFine = createAsyncThunk(
-    'fine/updateFine',
-    async ({ id, fine }: { id: number; fine: DsFines }, { rejectWithValue }) => {
+    'task/updateFine',
+    async ({ id, fine }: { id: number; fine: DsTasks }, { rejectWithValue }) => {
         try {
-            const response = await api.fine.updateUpdate(id, fine);
+            const response = await api.task.updateUpdate(id, fine);
             return response.data;
         } catch (error) {
             return rejectWithValue('Ошибка при обновлении штрафа');
@@ -128,8 +128,8 @@ export const updateFine = createAsyncThunk(
     }
 );
 
-const finesSlice = createSlice({
-    name: 'fines',
+const taskSlice = createSlice({
+    name: 'tasks',
     initialState,
     reducers: {
         setSearchValue(state, action) {
@@ -146,7 +146,7 @@ const finesSlice = createSlice({
             })
             .addCase(getFinesList.fulfilled, (state, action) => {
                 state.loading = false;
-                state.fines = action.payload?.fines ?? []; // Если fines нет, ставим пустой массив
+                state.tasks = action.payload?.tasks ?? []; // Если fines нет, ставим пустой массив
                 state.resCount = action.payload?.resCount ?? 0;
                 state.resId = action.payload?.resId ?? 0;
                 // @ts-ignore
@@ -154,7 +154,7 @@ const finesSlice = createSlice({
             })
             .addCase(getFinesList.rejected, (state) => {
                 state.loading = false;
-                state.fines = ALBUMS_MOCK.fines.filter((item) =>
+                state.tasks = ALBUMS_MOCK.tasks.filter((item) =>
                     item.title.toLocaleLowerCase().startsWith(state.searchValue.toLocaleLowerCase())
                 );
                 state.resCount = ALBUMS_MOCK.resCount;
@@ -162,25 +162,25 @@ const finesSlice = createSlice({
                 console.log("error")
             })
             .addCase(updateFine.fulfilled, (state, action) => {
-                state.fines = state.fines.map((fine) =>
-                    fine.fineID === action.payload.fineID ? action.payload : fine
+                state.tasks = state.tasks.map((task) =>
+                    task.id === action.payload.id ? action.payload : task
                 );
             })
             .addCase(deleteFine.fulfilled, (state, action) => {
-                state.fines = state.fines.filter((fine) => fine.fineID !== action.payload);
+                state.tasks = state.tasks.filter((task) => task.id !== action.payload);
             })
             .addCase(uploadFineImage.fulfilled, (state, action) => {
-                state.fines = state.fines.map((fine) =>
-                    fine.fineID === action.payload.fineID
-                        ? { ...fine, imge: action.payload.imageUrl }
-                        : fine
+                state.tasks = state.tasks.map((task) =>
+                    task.id === action.payload.fineID
+                        ? { ...task, imge: action.payload.imageUrl }
+                        : task
                 );
             })
             .addCase(createFine.fulfilled, (state, action) => {
-                state.fines.push(action.payload); // ✅ Добавляем новый штраф в список
+                state.tasks.push(action.payload); // ✅ Добавляем новый штраф в список
             });
     },
 });
 
-export const { setSearchValue } = finesSlice.actions;
-export default finesSlice.reducer;
+export const { setSearchValue } = taskSlice.actions;
+export default taskSlice.reducer;

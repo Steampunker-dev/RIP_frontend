@@ -10,21 +10,20 @@
  */
 
 
-export interface DsFineResolutions {
-  fin_Res_ID?: number;
-  fine_ID?: number;
+export interface DsTaskResolutions {
+  task_Res_ID?: number;
+  task_ID?: number;
   number?: number;
   resolution_ID?: number;
 }
 
-export interface DsFines {
-  dopInf?: string;
+export interface DsTasks {
   id: number;
   description?: string;
   image?: string;
   minutes?: number;
   title?: string;
-  answer: string;
+  answer?: string;
 
 }
 
@@ -48,8 +47,8 @@ export interface DsUsers {
   password?: string;
 }
 
-export interface ModelsFinesListWithRes {
-  fines?: DsFines[];
+export interface ModelsTasksListWithRes {
+  tasks?: DsTasks[];
   resCount?: number;
   resId?: number;
 }
@@ -212,7 +211,7 @@ export class HttpClient<SecurityDataType = unknown> {
  * API server
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
-  fine = {
+    task = {
     /**
      * @description Get list of all fines or search fines by keyword
      *
@@ -228,7 +227,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       },
       params: RequestParams = {},
     ) =>
-      this.request<ModelsFinesListWithRes, Record<string, string>>({
+      this.request<ModelsTasksListWithRes, Record<string, string>>({
         path: `/task`,
         method: "GET",
         query: query,
@@ -260,8 +259,8 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @summary Create a new fine
      * @request POST:/fine/create
      */
-    createCreate: (fine: DsFines, params: RequestParams = {}) =>
-      this.request<DsFines, Record<string, string>>({
+    createCreate: (fine: DsTasks, params: RequestParams = {}) =>
+      this.request<DsTasks, Record<string, string>>({
         path: `/fine/create`,
         method: "POST",
         body: fine,
@@ -305,8 +304,8 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @summary Update a fine by ID
      * @request PUT:/fine/update/{id}
      */
-    updateUpdate: (id: number, fine: DsFines, params: RequestParams = {}) =>
-      this.request<DsFines, Record<string, string>>({
+    updateUpdate: (id: number, fine: DsTasks, params: RequestParams = {}) =>
+      this.request<DsTasks, Record<string, string>>({
         path: `/fine/update/${id}`,
         method: "PUT",
         body: fine,
@@ -324,14 +323,14 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request GET:/fine/{id}
      */
     fineDetail: (id: number, params: RequestParams = {}) =>
-      this.request<DsFines, string | Record<string, string>>({
+      this.request<DsTasks, string | Record<string, string>>({
         path: `/task/${id}`,
         method: "GET",
         format: "json",
         ...params,
       }),
   };
-  fines = {
+  tasks = {
     /**
      * @description Delete fine by its ID
      *
@@ -357,8 +356,8 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @summary Update fine-resolution count
      * @request PUT:/fr/count/{id}
      */
-    countUpdate: (id: number, request: DsFineResolutions, params: RequestParams = {}) =>
-      this.request<DsFineResolutions, Record<string, string>>({
+    countUpdate: (id: number, request: DsTaskResolutions, params: RequestParams = {}) =>
+      this.request<DsTaskResolutions, Record<string, string>>({
         path: `/fr/count/${id}`,
         method: "PUT",
         body: request,

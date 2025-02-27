@@ -30,6 +30,7 @@ export const MoreCard: FC<ICardProps> = ({
             </div>
             <Card.Body>
                 <Card.Title className="textStyleMore">{title}</Card.Title>
+                <Card.Text className="detailedDescription">{description}</Card.Text>
                 <Card.Text className="detailedDescription">
                     {description}
                 </Card.Text>

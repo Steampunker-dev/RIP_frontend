@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 import {RootState} from "../redux/store.tsx";
 
 interface ICardProps {
-    id: number;
     image: string;
     title: string;
     minutes: number;
@@ -20,12 +19,9 @@ interface ICardProps {
 
 
 export const FineCard: FC<ICardProps> = ({
-                                             id,
                                              image,
                                              title,
                                              minutes,
-                                             description,
-                                             answer,
                                              imageClickHandler,
                                              buttonClickHandler,
                                          }) => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
-import { getFinesList, updateFine, deleteFine, uploadFineImage, createFine } from "../redux/fineSlice";
+import { getFinesList, updateFine, deleteFine, uploadFineImage, createFine } from "../redux/taskSlice.tsx";
 import { EditCard } from "../components/EditCard";
 import "./EditPage.css";
 import {DsFines} from "../api/Api.ts";

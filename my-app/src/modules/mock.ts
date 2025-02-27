@@ -1,9 +1,9 @@
 import {finesResult} from "./itunesApi.ts";
 
 export const ALBUMS_MOCK: finesResult = {
-    fines: [
+    tasks: [
         {
-            fineID: 1,
+            taskID: 1,
             title: "Проезд по пешеходному переходу",
             fullInf: "Как и на велосипеде, на самокате запрещено ехать по пешеходным переходам — необходимо спешиться и катить СИМ в руках.",
             price: 2000,
@@ -11,7 +11,7 @@ export const ALBUMS_MOCK: finesResult = {
             dopInf: "Колличество:"
         },
         {
-            fineID: 2,
+            taskID: 2,
             title: "Езда вдвоем на электросамокате",
             fullInf: "На электросамокатах запрещено перевозить пассажиров, то есть ездить вдвоем на одном транспорте нельзя.",
             price: 1500,
@@ -19,7 +19,7 @@ export const ALBUMS_MOCK: finesResult = {
             dopInf: "Колличество людей на самокате:"
         },
         {
-            fineID: 3,
+            taskID: 3,
             title: "Передача управления электросамокатом ребенку",
             fullInf: "Водить арендные самокаты можно только с 18 лет.",
             price: 5000,
@@ -27,7 +27,7 @@ export const ALBUMS_MOCK: finesResult = {
             dopInf: "Возраст ребенка:"
         },
         {
-            fineID: 4,
+            taskID: 4,
             title: "Превышение скорости",
             fullInf: "Запрещено передвигаться на электросамокате в нетрезвом виде.",
             price: 30000,
@@ -35,7 +35,7 @@ export const ALBUMS_MOCK: finesResult = {
             dopInf: "Скорость:"
         },
         {
-            fineID: 5,
+            taskID: 5,
             title: "Езда на самокате пьяным",
             fullInf: "Запрещено передвигаться на электросамокате в нетрезвом виде.",
             price: 2000,
@@ -43,7 +43,7 @@ export const ALBUMS_MOCK: finesResult = {
             dopInf: "Промилле:"
         },
         {
-            fineID: 6,
+            taskID: 6,
             title: "Помеха в движении транспортного средства",
             fullInf: "Запрещено передвигаться на электросамокате в нетрезвом виде.",
             price: 4000,

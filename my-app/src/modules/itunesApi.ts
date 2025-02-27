@@ -1,5 +1,5 @@
-export interface Fine {
-    fineID: number;
+export interface Task {
+    taskID: number;
     title: string;
     fullInf: string,
     price: number;
@@ -7,14 +7,14 @@ export interface Fine {
     dopInf: string;
 }
 export interface finesResult {
-    fines: Fine[];
+    tasks: Task[];
     resCount: number;
     resId: number;
 }
 
 export const getAlbumById = async (
     id: number | string
-): Promise<Fine> => {
+): Promise<Task> => {
     return fetch(`http://localhost:8080/task/${id}`)
         .then((response) => response.json())
        .then((data) => data.cards); // Извлекаем поле cards

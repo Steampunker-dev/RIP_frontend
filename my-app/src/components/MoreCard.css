@@ -93,7 +93,10 @@
     }
 
     .detailedDescription {
-        display: none !important;
+        font-size: 16px;
+        font-weight: bold;
+        color: #0078D7;
+        margin-bottom: 8px;
     }
 
     .moreCardPriceButtonWrapper {

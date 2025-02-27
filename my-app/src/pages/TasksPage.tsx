@@ -1,4 +1,4 @@
-import "./FinesPage.css";
+import "./TasksPage.css";
 import { Col, Row, Spinner } from "react-bootstrap";
 import InputField from "../components/InputField.tsx";
 import { BreadCrumbs } from "../components/BreadCrumbs.tsx";
@@ -8,21 +8,21 @@ import { useNavigate } from "react-router-dom";
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from '../redux/store';
-import { getFinesList, addFineToResolution } from "../redux/fineSlice.tsx";
-import { DsFines } from "../api/Api.ts";
+import { getFinesList, addFineToResolution } from "../redux/taskSlice.tsx";
+import { DsTasks } from "../api/Api.ts";
 import {fetchCart} from "../redux/resolutionSlice.tsx";
 
-const FinesPage: FC = () => {
+const TasksPage: FC = () => {
 
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
-    const { searchValue, fines, loading, resCount, resId } = useSelector((state: RootState) => state.fines)
+    const { searchValue, tasks, loading, resCount, resId } = useSelector((state: RootState) => state.tasks)
 
     const cart = useSelector(
         (state: RootState) => state.cart.cart,
 
         (prev, next) => {
-            return (prev?.Fines?.length || 0) === (next?.Fines?.length || 0);
+            return (prev?.Tasks?.length || 0) === (next?.Tasks?.length || 0);
         }
     );
 
@@ -74,7 +74,7 @@ const FinesPage: FC = () => {
                 <div className="loadingBg">
                     <Spinner animation="border" />
                 </div>
-            ) : fines.length === 0 ? (
+            ) : tasks.length === 0 ? (
                 <div>
                     <h1>К сожалению, пока ничего не найдено :(</h1>
                 </div>
@@ -85,10 +85,10 @@ const FinesPage: FC = () => {
                     md={3}
                     lg={4}
                     className={`g-4 full-width-row ${
-                        fines.length === 1 ? "justify-content-center" : "justify-content-evenly"
+                        tasks.length === 1 ? "justify-content-center" : "justify-content-evenly"
                     }`}
                 >
-                    {fines.map((item: DsFines) => (
+                    {tasks.map((item: DsTasks) => (
                         <Col key={item.id} className="d-flex">
                             <FineCard
                                 image={item.image ?? ""}
@@ -116,4 +116,4 @@ const FinesPage: FC = () => {
     );
 };
 
-export default FinesPage;
+export default TasksPage;

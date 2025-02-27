@@ -1,17 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../api'; // Импортируем API-клиент
-import { DsResolutions, DsFines } from "../api/Api.ts";
+import { DsResolutions, DsTasks } from "../api/Api.ts";
 
 // Определяем типы данных корзины
-export interface FineCartItem {
-    fines: DsFines;
+export interface TaskCartItem {
+    tasks: DsTasks;
     count: number;
-    fin_res_id: string;
+    task_res_id: string;
 }
 
 export interface CartData {
     Res: DsResolutions;
-    Fines: FineCartItem[];
+    Tasks:  TaskCartItem[];
 }
 
 // Интерфейс состояния корзины
@@ -164,9 +164,9 @@ const cartSlice = createSlice({
             })
             .addCase(deleteFinFromRes.fulfilled, (state, action) => {
                 state.isLoading = false;
-                if (state.cart && state.cart.Fines) {
-                    state.cart.Fines = state.cart.Fines.filter(
-                        (item) => item.fin_res_id !== action.payload
+                if (state.cart && state.cart.Tasks) {
+                    state.cart.Tasks = state.cart.Tasks.filter(
+                        (item) => item.task_res_id !== action.payload
                     );
                     console.log("Штраф удален из Redux:", action.payload);
                 }

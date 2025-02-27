@@ -1,7 +1,7 @@
 //import './redux/axiosConfig.ts'; // Импортируем конфигурацию axios
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AlbumPage } from "./pages/AlbumPage.tsx";
-import FinesPage from "./pages/FinesPage.tsx";
+import TasksPage from "./pages/TasksPage.tsx";
 import { ROUTES } from "./modules/Routes.tsx";
 import { HomePage } from "./pages/HomePage.tsx";
 import Header from "./components/header.tsx";
@@ -33,7 +33,7 @@ function App() {
             <Navbaar />
             <Routes>
                 <Route path={ROUTES.HOME} index element={<HomePage />} />
-                <Route path={ROUTES.ALBUMS} element={<FinesPage />} />
+                <Route path={ROUTES.ALBUMS} element={<TasksPage />} />
                 <Route path={`${ROUTES.ALBUMS}/:id`} element={<AlbumPage />} />
                 <Route path={`${ROUTES.LOGIN}`} element={<LoginPage />} />
                 <Route path={`${ROUTES.BASKET}/:id`} element={<BasketPage />} />
