@@ -7,7 +7,7 @@ import { HomePage } from "./pages/HomePage.tsx";
 import Header from "./components/header.tsx";
 import { Navbaar } from "./components/Navbar.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
-
+import {TasksProvider} from "./context/TasksContext.tsx";
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setCredentials } from './redux/userSlice';
@@ -28,6 +28,7 @@ function App() {
     }, [dispatch]);
 
     return (
+        <TasksProvider>
         <BrowserRouter basename="/RIP_frontend">
             <Header />
             <Navbaar />
@@ -41,6 +42,8 @@ function App() {
                 <Route path={ROUTES.RESOLUTIONS} index element={<ResolutionsPage />} />
             </Routes>
         </BrowserRouter>
+        </TasksProvider>
+
     );
 }
 

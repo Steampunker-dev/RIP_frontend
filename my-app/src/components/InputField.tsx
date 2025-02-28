@@ -1,19 +1,15 @@
-import { FC } from 'react';
-import { Button, InputGroup, Form } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../redux/store';
-import {getFinesList, setSearchValue} from '../redux/taskSlice.tsx';
-import './InputField.css';
+import { FC } from "react";
+import { Button, InputGroup, Form } from "react-bootstrap";
+import { useTasks } from "../context/TasksContext"; // ✅ Используем контекст
+import "./InputField.css";
 
 interface Props {
     loading?: boolean;
-    value: string
+    value: string;
+    onChange: (value: string) => void; // ✅ Передаем `onChange`
 }
 
-const InputField: FC<Props> = ({ loading,  value}) => {
-
-    const dispatch = useDispatch<AppDispatch>();
-
+const InputField: FC<Props> = ({ loading, value, onChange }) => {
     return (
         <div className="inputField">
             <InputGroup className="mb-3 border-custom">
@@ -22,14 +18,14 @@ const InputField: FC<Props> = ({ loading,  value}) => {
                     value={value}
                     aria-label="Search"
                     aria-describedby="basic-addon1"
-                    onChange={(event) => dispatch(setSearchValue(event.target.value))}
+                    onChange={(event) => onChange(event.target.value)} // ✅ Теперь обновляем через пропсы
                     className="input-custom"
                 />
                 <Button
                     type="submit"
                     id="button-addon1"
                     disabled={loading}
-                    onClick={() => dispatch(getFinesList())}
+                    onClick={() => onChange(value)} // ✅ Нажатие "Найти" теперь тоже обновляет фильтр
                     className="btn-custom"
                 >
                     Найти

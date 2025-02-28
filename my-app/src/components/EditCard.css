@@ -1,0 +1,104 @@
+/* Контейнер страницы */
+.fine-edit-page {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important; /* Минимальный отступ между карточками */
+    padding: 20px !important;
+    background-color: #F9FBFD !important;
+    width: 100% !important;
+}
+
+/* Карточка редактирования (плоская и длинная) */
+.fine-edit-card {
+    width: 98% !important; /* Почти вся ширина */
+    max-width: 1300px !important; /* Ограничение ширины */
+    min-height: 50px !important; /* Делаем карточку ещё тоньше */
+    display: flex !important;
+    flex-direction: row !important; /* Все элементы идут слева направо */
+    align-items: center !important;
+    justify-content: flex-start !important;
+    border: 1px solid #C0C0C0 !important;
+    background-color: white !important;
+    padding: 5px 10px !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    text-align: left !important;
+    overflow: hidden !important; /* Если контент выходит за границы */
+}
+
+/* Изображение штрафа */
+.fine-image {
+    width: 40px !important; /* Делаем картинку ещё меньше */
+    height: 40px !important;
+    object-fit: cover !important;
+    border-radius: 2px !important;
+    margin-right: 10px !important; /* Отступ от текста */
+}
+
+/* Контейнер загрузки */
+.upload-container {
+    display: none !important; /* Скрываем кнопку загрузки, если не нужна */
+}
+
+/* Поля ввода */
+.fine-edit-card .form-group {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    margin-right: 10px !important; /* Отступы между полями */
+    min-width: 150px !important; /* Минимальная ширина полей */
+}
+
+.fine-edit-card .form-label {
+    font-size: 12px !important;
+    color: #777 !important;
+    margin-bottom: 2px !important;
+}
+
+.fine-edit-card .form-control {
+    padding: 4px 6px !important;
+    font-size: 12px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 2px !important;
+    width: 100% !important;
+    height: 24px !important; /* Уменьшаем высоту полей */
+}
+
+/* Кнопки */
+.button-group {
+    display: flex !important;
+    gap: 6px !important;
+    margin-left: auto !important;
+}
+
+.save-button,
+.delete-button {
+    padding: 4px 8px !important;
+    font-size: 12px !important;
+    height: 30px !important;
+    border-radius: 2px !important;
+}
+
+.save-button {
+    background-color: #0078D7 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.save-button:hover {
+    background-color: #0056B3 !important;
+}
+
+.delete-button {
+    background-color: #d9534f !important;
+    color: white !important;
+    border: none !important;
+}
+
+.delete-button:hover {
+    background-color: #c9302c !important;
+}

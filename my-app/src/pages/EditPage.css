@@ -1,16 +1,17 @@
 /* Контейнер страницы */
 .fine-edit-page {
     display: flex !important;
-    flex-wrap: wrap !important;
+    flex-direction: column !important; /* Размещаем элементы в колонку */
+    align-items: center !important; /* Выравниваем карточки по центру */
     gap: 24px !important; /* Чуть больше пространства между элементами */
-    justify-content: center !important;
     padding: 20px !important;
     background-color: #F9FBFD !important; /* Легкий светлый фон */
+    width: 100% !important;
 }
 
 /* Карточка редактирования */
 .fine-edit-card {
-    width: 360px !important; /* Чуть больше, чтобы контент лучше помещался */
+    width: 90% !important; /* Карточка занимает 90% ширины экрана */
     border: 2px solid #0078D7 !important; /* Чистый синий */
     padding: 18px !important;
     border-radius: 8px !important; /* Добавил небольшое скругление */

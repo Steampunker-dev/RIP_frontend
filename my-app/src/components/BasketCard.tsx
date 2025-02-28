@@ -52,7 +52,13 @@ export const BasketCard: FC<IBasketCardProps> = ({
 
             <div className="basketCardInfo">
                 <p>{dopInf} {count}</p>
-                <div className="basketCardPrice">{price} ₽</div>
+                <div className="basketCardPrice">{price}минут
+
+
+                </div>
+
+
+
             </div>
         </div>
     );

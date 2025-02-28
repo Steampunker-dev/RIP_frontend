@@ -4,11 +4,15 @@ import "./MoreCard.css"; // Для стилизации
 import imaged from "../DefaultImage.jpg";
 
 interface ICardProps {
-    image: string;
-    title: string;
+    id?:number;
+
+    answer: string;
     description: string;
+    // Изображение ответа
+    image: string;
     minutes: number;
-    answer: string; // Изображение ответа
+    title: string;
+
 }
 
 export const MoreCard: FC<ICardProps> = ({
@@ -18,6 +22,7 @@ export const MoreCard: FC<ICardProps> = ({
                                              minutes,
                                              answer,
                                          }) => {
+    console.log(answer)
     return (
         <Card className="moreCard">
             <div className="moreCardImageContainer">
@@ -32,7 +37,6 @@ export const MoreCard: FC<ICardProps> = ({
                 <Card.Title className="textStyleMore">{title}</Card.Title>
                 <Card.Text className="detailedDescription">{description}</Card.Text>
                 <Card.Text className="detailedDescription">
-                    {description}
                 </Card.Text>
 
                 {/* Добавляем изображение ответа с подписью */}

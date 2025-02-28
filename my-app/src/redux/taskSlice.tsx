@@ -1,5 +1,5 @@
 // src/redux/fineSlice.ts
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice,PayloadAction} from '@reduxjs/toolkit';
 import {DsTasks} from "../api/Api.ts";
 import {api} from "../api";
 import {ALBUMS_MOCK} from "../modules/mock.ts";
@@ -138,6 +138,12 @@ const taskSlice = createSlice({
         updateResId(state, action) {
             state.resId = action.payload; // ✅ Обновляем `resId` в Redux
         },
+        setResId(state, action: PayloadAction<number>) {
+            state.resId = action.payload;
+        },
+        setResCount(state, action: PayloadAction<number>) {
+            state.resCount = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -182,5 +188,5 @@ const taskSlice = createSlice({
     },
 });
 
-export const { setSearchValue } = taskSlice.actions;
+export const { setSearchValue,setResId, setResCount } = taskSlice.actions;
 export default taskSlice.reducer;
